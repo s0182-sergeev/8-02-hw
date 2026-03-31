@@ -31,7 +31,7 @@
 vagrant up
 vagrant ssh
 
-1. `Действовал по инструкции https://www.jenkins.io/doc/book/installing/linux/.
+1. Действовал по инструкции https://www.jenkins.io/doc/book/installing/linux/.
 Проверил наличие java:
 java -version
 dpkg -l | grep openjdk
@@ -53,13 +53,13 @@ sudo apt install jenkins
 В браузере на хостовой ОС ввел адрес jenkins http://192.168.56.10:8080
 Установил пароль админа jenkins (взял временный пароль из файла).
 Выбрал установку обычных плагинов, ввел реквизиты администратора.
-sudo cat /var/lib/jenkins/secrets/initialAdminPassword`
+sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 
-2. `Go не устанавливал, потому что он установлен в docker`
+2. Go не устанавливал, потому что он установлен в docker.
 
-3. `В браузере на хостовой ОС открыл в браузере страницу репозитория https://github.com/netology-code/sdvps-materials.git и сделал fork в свой репозиторий - получился https://github.com/s0182-sergeev/sdvps-materials.git.`
+3. В браузере на хостовой ОС открыл в браузере страницу репозитория https://github.com/netology-code/sdvps-materials.git и сделал fork в свой репозиторий - получился https://github.com/s0182-sergeev/sdvps-materials.git.
 
-4. `В браузере на хостовой ОС открыл jenkins http://192.168.56.10:8080 и зарегистрировался как admin. Создал в jenkins проект типа Freestyle Project (задача со свободной конфигурацией) с именем my_pipe. ввел адрес своего репозитория и указал его ветку main, триггер не выбирал, в разделе Build Steps (Шаги сборки) добавил шаг «Execute shell (Выполнить команду shell)», ввел текст команды из дополнительных материалов к домашнему заданию:
+4. В браузере на хостовой ОС открыл jenkins http://192.168.56.10:8080 и зарегистрировался как admin. Создал в jenkins проект типа Freestyle Project (задача со свободной конфигурацией) с именем my_pipe. ввел адрес своего репозитория и указал его ветку main, триггер не выбирал, в разделе Build Steps (Шаги сборки) добавил шаг «Execute shell (Выполнить команду shell)», ввел текст команды из дополнительных материалов к домашнему заданию:
 /usr/local/go/bin/go test .
 docker build . -t ubuntu-jammy:8082/hello-world:v$BUILD_NUMBER
 
@@ -68,7 +68,7 @@ sudo usermod -aG docker jenkins
 sudo usermod -aG docker $USER
 id jenkins
 
-Скриншоты с настройками проекта и результатами выполнения сборки:`
+Скриншоты с настройками проекта и результатами выполнения сборки:
 
 `При необходимости прикрепитe сюда скриншоты
 ![Название скриншота 1](ссылка на скриншот 1)`
