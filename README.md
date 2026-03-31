@@ -24,12 +24,12 @@
 
 ### Задание 1
 
-`Задание выполнял на невиртуализированном Debian 13 с графическим интерфейсом (4Gb памяти).
+Задание выполнял на невиртуализированном Debian 13 с графическим интерфейсом (4Gb памяти).
 Установил Vagrant по инструкции https://docs.astra-automation.ru/1.2/misc/tools/vagrant/
 Развернул ВМ в VBox из образа Ubuntu 24 из https://vagrant.elab.pro/downloads/
 Запустил ВМ и подключился к по ssh:
 vagrant up
-vagrant ssh`
+vagrant ssh
 
 1. `Действовал по инструкции https://www.jenkins.io/doc/book/installing/linux/.
 Проверил наличие java:
