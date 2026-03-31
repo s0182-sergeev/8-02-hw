@@ -1,4 +1,4 @@
-# Домашнее задание к занятию "`Название занятия`" - `Фамилия и имя студента`
+# Домашнее задание к занятию "`Что такое DevOps. СI/СD`" - `Сергеев Александр`
 
 
 ### Инструкция по выполнению домашнего задания
@@ -24,22 +24,51 @@
 
 ### Задание 1
 
-`Приведите ответ в свободной форме........`
+`Задание выполнял на невиртуализированном Debian 13 с графическим интерфейсом (4Gb памяти).
+Установил Vagrant по инструкции https://docs.astra-automation.ru/1.2/misc/tools/vagrant/
+Развернул ВМ в VBox из образа Ubuntu 24 из https://vagrant.elab.pro/downloads/
+Запустил ВМ и подключился к по ssh:
+vagrant up
+vagrant ssh`
 
-1. `Заполните здесь этапы выполнения, если требуется ....`
-2. `Заполните здесь этапы выполнения, если требуется ....`
-3. `Заполните здесь этапы выполнения, если требуется ....`
-4. `Заполните здесь этапы выполнения, если требуется ....`
-5. `Заполните здесь этапы выполнения, если требуется ....`
-6. 
+1. `Действовал по инструкции https://www.jenkins.io/doc/book/installing/linux/.
+Проверил наличие java:
+java -version
+dpkg -l | grep openjdk
 
-```
-Поле для вставки кода...
-....
-....
-....
-....
-```
+Установил Oracle java 21 jdk (соответствует openjava 21 jdk), который содержит jre. На сайте производителя Java https://www.oracle.com/java/technologies/downloads/?roistat_visit=9957740#java21 скопировал ссылку на установочный файл, загрузил его и установил Java 21 jdk:
+wget https://download.oracle.com/java/21/latest/jdk-21_linux-x64_bin.deb
+sudo dpkg -i jdk-21_linux-x64_bin.deb
+java -version
+
+Установил jenkins (установщик задает автозапуск сервиса):
+sudo wget -O /etc/apt/keyrings/jenkins-keyring.asc \
+  https://pkg.jenkins.io/debian-stable/jenkins.io-2026.key
+echo "deb [signed-by=/etc/apt/keyrings/jenkins-keyring.asc]" \
+  https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
+  /etc/apt/sources.list.d/jenkins.list > /dev/null
+sudo apt update
+sudo apt install jenkins
+
+В браузере на хостовой ОС ввел адрес jenkins http://192.168.56.10:8080
+Установил пароль админа jenkins (взял временный пароль из файла).
+Выбрал установку обычных плагинов, ввел реквизиты администратора.
+sudo cat /var/lib/jenkins/secrets/initialAdminPassword`
+
+2. `Go не устанавливал, потому что он установлен в docker`
+
+3. `В браузере на хостовой ОС открыл в браузере страницу репозитория https://github.com/netology-code/sdvps-materials.git и сделал fork в свой репозиторий - получился https://github.com/s0182-sergeev/sdvps-materials.git.`
+
+4. `В браузере на хостовой ОС открыл jenkins http://192.168.56.10:8080 и зарегистрировался как admin. Создал в jenkins проект типа Freestyle Project (задача со свободной конфигурацией) с именем my_pipe. ввел адрес своего репозитория и указал его ветку main, триггер не выбирал, в разделе Build Steps (Шаги сборки) добавил шаг «Execute shell (Выполнить команду shell)», ввел текст команды из дополнительных материалов к домашнему заданию:
+/usr/local/go/bin/go test .
+docker build . -t ubuntu-jammy:8082/hello-world:v$BUILD_NUMBER
+
+Включил пользователя jenkins и себя (vagrant) в группу docker. Для принятия изменений переподключился в ssh, рестартовал сервис jenkins (sudo systemctl restart jenkins.service) и обновил страницу jenkins в браузере.
+sudo usermod -aG docker jenkins
+sudo usermod -aG docker $USER
+id jenkins
+
+Скриншоты с настройками проекта и результатами выполнения сборки:`
 
 `При необходимости прикрепитe сюда скриншоты
 ![Название скриншота 1](ссылка на скриншот 1)`
