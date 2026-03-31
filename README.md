@@ -71,6 +71,14 @@ id jenkins
 Скриншоты с настройками проекта и результатами выполнения сборки:
 ![Cкриншот 1](screenshot/screen01.png)
 
+![Cкриншот 1](screenshot/screen02.png)
+
+![Cкриншот 1](screenshot/screen03.png)
+
+![Cкриншот 1](screenshot/screen04.png)
+
+![Cкриншот 1](screenshot/screen05.png)
+
 
 ---
 
